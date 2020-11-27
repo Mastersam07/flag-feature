@@ -5,8 +5,8 @@ import 'feature.dart';
 
 /// App wide feature manager. Manages the availability status of each features
 /// on the app.
-class FeatureFlag {
-  /// Constructs an instance of [FeatureFlag].
+class FireFlag {
+  /// Constructs an instance of [FireFlag].
   ///
   /// Make sure you have set the required Firebase Remote Config setup on your
   /// app.
@@ -15,11 +15,10 @@ class FeatureFlag {
   /// duration time for any fetch from the Firebase Remote Config server.
   /// Server fetch will only be done when the previous fetch is already
   /// expired. Default expiration duration is 5 minutes.
-  FeatureFlag({
+  FireFlag({
     @required Features features,
     Duration fetchExpirationDuration,
   }) {
-    _initFirebaseRemoteConfig();
     _features = features;
     _fetchExpirationDuration = fetchExpirationDuration ?? Duration(minutes: 5);
   }
@@ -32,12 +31,9 @@ class FeatureFlag {
   /// that there is no feature flag data yet on Firebase Remote Config's local
   /// cache.
   Features _features;
+
   RemoteConfig _remoteConfig = RemoteConfig();
   Duration _fetchExpirationDuration;
-
-  void _initFirebaseRemoteConfig() async {
-    _remoteConfig = await RemoteConfig.instance;
-  }
 
   /// Initialize feature flag stream.
   ///
@@ -47,6 +43,8 @@ class FeatureFlag {
   /// Remote Config server and store the latest config to the local cache and
   /// to the stream.
   Stream<Features> featureFlagSubscription() async* {
+    _remoteConfig = await RemoteConfig.instance;
+
     ///1. Get the feature flag from Firebase Remote Config's local cache.
     yield _featureFlagFromLocalStoredFirebaseRemoteConfig();
 

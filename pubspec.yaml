@@ -1,5 +1,5 @@
-name: feature_flag
-description: App wide feature manager.
+name: fire_flag
+description: App wide feature manager using the power of Firebase Remote Config.
 version: 1.0.0
 authors: 
   - Muhammad Yusuf <yusuf@evermos.com>
