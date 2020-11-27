@@ -1,0 +1,19 @@
+name: feature_flag
+description: App wide feature manager.
+version: 1.0.0
+authors: 
+  - Muhammad Yusuf <yusuf@evermos.com>
+homepage: https://github.com/evermos/
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_remote_config: ^0.4.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
