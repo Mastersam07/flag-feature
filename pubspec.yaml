@@ -1,9 +1,9 @@
 name: fire_flag
 description: App wide feature manager using the power of Firebase Remote Config.
-version: 1.0.1
+version: 1.0.2
 authors: 
   - Muhammad Yusuf <yusuf@evermos.com>
-homepage: https://github.com/evermos/
+homepage: https://github.com/evermos/fire-flag
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
