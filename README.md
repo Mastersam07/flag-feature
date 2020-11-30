@@ -8,15 +8,15 @@ Add Fire Flag to your pubspec.yaml file:
 
 ```yaml
 dependencies:
-  fire_flag:
+  fire_flag: ^1.0.0
 ```
 
 ## Usage
 
 ### Adding Firebase configuration file
-Add the required GoogleServiceInfo.plist (for iOS) and google_services.json (for Android) respectively to your project. See [here](https://support.google.com/firebase/answer/7015592?hl=id) for further read about adding Firebase configuration file .
+Add the required GoogleServiceInfo.plist (for iOS) and google_services.json (for Android) respectively to your project. See [here](https://support.google.com/firebase/answer/7015592?hl=id) for further read about adding Firebase configuration file.
 
-### Android integration
+### Firebase Remote Config Android integration
 
 Enable the Google services by configuring the Gradle scripts as such.
 
@@ -44,7 +44,7 @@ Make sure to call FirebaseApp.initializeApp(Context) first.
 ```
 
 *Note:* When you are debugging on android, use a device or AVD with Google Play services.
-Otherwise you will not be able to use Firebase Remote Config.
+Otherwise you will not be able to use Firebase Remote Config and Fire Flag.
 
 ### Use the plugin
 
@@ -83,11 +83,11 @@ fireFlag
 
 ## Example
 
-See the [example application](https://github.com/Evermos/fire_flag/example) source
+See the [example application](https://github.com/evermos/fire-flag/tree/main/example) source
 for a complete sample app using the Fire Flag.
 
 ## Issues and feedback
 
-Please file specific issues, bugs, or feature requests in our [issue tracker](https://github.com/evermos/fire_flag/issues/new).
+Please file specific issues, bugs, or feature requests in our [issue tracker](https://github.com/evermos/fire-flag/issues/new).
 
-To contribute a change to this plugin, open a [pull request](https://github.com/evermos/fire_flag/pulls).
+To contribute a change to this plugin, open a [pull request](https://github.com/evermos/fire-flag/pulls).
