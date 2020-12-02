@@ -2,7 +2,10 @@ import 'package:flutter/foundation.dart';
 
 /// Status of each features available on the app.
 class Features {
+  /// Constructs an instance of [Features].
   Features({this.features});
+
+  /// Features and its availability statuses.
   List<Feature> features;
 
   /// Checks whether the feature is enabled or not.

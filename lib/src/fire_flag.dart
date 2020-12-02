@@ -3,13 +3,15 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 import 'feature.dart';
 
-/// App wide feature manager. Manages the availability status of each features
-/// on the app.
+/// App wide feature flag manager. Manages the availability status of each
+/// features on the app.
 class FireFlag {
   /// Constructs an instance of [FireFlag].
   ///
   /// Make sure you have set the required Firebase Remote Config setup on your
   /// app.
+  ///
+  /// Set the default values of feature flags to [features].
   ///
   /// Set the [fetchExpirationDuration] to specify the custom expiration
   /// duration time for any fetch from the Firebase Remote Config server.

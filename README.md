@@ -1,8 +1,8 @@
 # Fire Flag
 
-App wide feature manager. Manages the availability status of each features on the app using the power of Firebase Remote Config.
+App wide feature flag manager. Manages the availability status of each features on the app utilizing the power of Firebase Remote Config.
 
-# Installing
+## Installing
 
 Add Fire Flag to your pubspec.yaml file:
 
@@ -14,7 +14,7 @@ dependencies:
 ## Usage
 
 ### Adding Firebase configuration file
-Add the required GoogleServiceInfo.plist (for iOS) and google_services.json (for Android) respectively to your project. See [here](https://support.google.com/firebase/answer/7015592?hl=id) for further read about adding Firebase configuration file.
+Add the required `GoogleServiceInfo.plist` (for iOS) and `google_services.json` (for Android) respectively to your project. See [here](https://support.google.com/firebase/answer/7015592?hl=id) for further read about adding Firebase configuration file.
 
 ### Firebase Remote Config Android integration
 
