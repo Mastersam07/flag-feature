@@ -16,10 +16,14 @@ class Features {
     var selectedFeatureName =
         _isEnum(featureName) ? describeEnum(featureName) : featureName;
 
-    return features
-        .where((feature) => feature.name == selectedFeatureName)
-        .first
-        .isEnabled;
+    final selectedFeatures =
+        features.where((feature) => feature.name == selectedFeatureName);
+
+    if (selectedFeatures == null || selectedFeatures.isEmpty) {
+      return false;
+    }
+
+    return selectedFeatures.first.isEnabled;
   }
 
   bool _isEnum(dynamic data) {
