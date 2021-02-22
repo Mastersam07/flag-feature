@@ -47,10 +47,7 @@ class FireFlag {
   Stream<Features> featureFlagSubscription() async* {
     _remoteConfig = await RemoteConfig.instance;
 
-    ///1. Get the feature flag from Firebase Remote Config's local cache.
-    yield _featureFlagFromLocalStoredFirebaseRemoteConfig();
-
-    ///2. Fetch latest feature flag data from Firebase Remote Config and apply
+    ///Fetch latest feature flag data from Firebase Remote Config and apply
     ///them.
     yield await _featureFlagFromFirebaseRemoteConfigServer();
   }
