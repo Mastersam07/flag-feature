@@ -8,7 +8,7 @@ Add Fire Flag to your pubspec.yaml file:
 
 ```yaml
 dependencies:
-  fire_flag: ^1.1.0
+  fire_flag: ^1.1.1
 ```
 
 ## Usage

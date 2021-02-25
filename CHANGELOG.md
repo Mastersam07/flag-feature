@@ -1,3 +1,8 @@
+## [1.1.1] - 2021-02-25
+
+### Fixed
+* Remove initial return as it causing the listener received the response twice. Let user handle feature flag initial value initialization
+
 ## [1.1.0] - 2020-12-02
 
 ### Changed
