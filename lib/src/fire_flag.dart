@@ -22,7 +22,8 @@ class FireFlag {
     Duration fetchExpirationDuration,
   }) {
     _features = features;
-    _fetchExpirationDuration = fetchExpirationDuration ?? Duration(minutes: 5);
+    _fetchExpirationDuration =
+        fetchExpirationDuration ?? const Duration(minutes: 5);
   }
 
   /// The status flag of available features.
@@ -53,7 +54,7 @@ class FireFlag {
   }
 
   Features _featureFlagFromLocalStoredFirebaseRemoteConfig() {
-    _features.features.forEach((feature) {
+    for (var feature in _features.features) {
       var featureFlagValue = _remoteConfig.getValue(feature.name);
 
       /// Check whether Firebase Remote Config has the feature flag data for the
@@ -64,7 +65,7 @@ class FireFlag {
         /// Case insensitive. 'True' will be still considered as true.
         feature.isEnabled = featureFlagValue.asBool();
       }
-    });
+    }
 
     return _features;
   }

@@ -2,7 +2,7 @@ import 'package:fire_flag/fire_flag.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
       isEnabled: false,
     ),
   ]);
+
+  const MyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
   final fireFlag = FireFlag(
     features: MyApp.features,
-    fetchExpirationDuration: Duration(seconds: 0),
+    fetchExpirationDuration: const Duration(seconds: 0),
   );
 
   @override
@@ -88,14 +90,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     '$_counter',
                     style: Theme.of(context).textTheme.headline4,
                   )
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
