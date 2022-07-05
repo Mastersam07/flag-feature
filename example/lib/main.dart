@@ -7,9 +7,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   static final features = Features(features: [
-    /// On the Firebase Remote Config server, this 'counter' config is set to
-    /// 'true' value. So if the counter feature is enabled when the sample app
-    /// is launched, the Fire Flag plugin is working.
     Feature(
       name: 'counter',
       isEnabled: false,
