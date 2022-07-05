@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 /// Status of each features available on the app.
 class Features {
   /// Constructs an instance of [Features].
-  Features({this.features});
+  Features({this.features = const []});
 
   /// Features and its availability statuses.
   List<Feature> features;
@@ -19,7 +19,7 @@ class Features {
     final selectedFeatures =
         features.where((feature) => feature.name == selectedFeatureName);
 
-    if (selectedFeatures == null || selectedFeatures.isEmpty) {
+    if (selectedFeatures.isEmpty) {
       return false;
     }
 
@@ -37,5 +37,5 @@ class Feature {
   String name;
   bool isEnabled;
 
-  Feature({@required this.name, @required this.isEnabled});
+  Feature({required this.name, required this.isEnabled});
 }

@@ -10,7 +10,7 @@ Add Flag Feature to your pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flag_feature: ^2.0.0
+  flag_feature: ^2.0.1
 ```
 
 ## Usage

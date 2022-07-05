@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 import 'feature.dart';
@@ -22,9 +21,9 @@ class FeatureFlag {
   /// of a cached config before it is considered stale.
   /// Defaults to five hours.
   FeatureFlag({
-    @required Features features,
-    Duration fetchExpirationDuration,
-    Duration fetchMaximumInterval,
+    required Features features,
+    Duration? fetchExpirationDuration,
+    Duration? fetchMaximumInterval,
   }) {
     _features = features;
     _fetchExpirationDuration =
@@ -39,11 +38,11 @@ class FeatureFlag {
   /// Default values will be used when the app launches for the first time so
   /// that there is no feature flag data yet on Firebase Remote Config's local
   /// cache.
-  Features _features;
+  late Features _features;
 
-  RemoteConfig _remoteConfig;
-  Duration _fetchExpirationDuration;
-  Duration _fetchMaximumInterval;
+  late FirebaseRemoteConfig _remoteConfig;
+  late Duration _fetchExpirationDuration;
+  late Duration _fetchMaximumInterval;
 
   /// Initialize feature flag stream.
   ///
@@ -53,7 +52,7 @@ class FeatureFlag {
   /// Remote Config server and store the latest config to the local cache and
   /// to the stream.
   Stream<Features> featureFlagSubscription() async* {
-    _remoteConfig = RemoteConfig.instance;
+    _remoteConfig = FirebaseRemoteConfig.instance;
 
     await _remoteConfig.setConfigSettings(RemoteConfigSettings(
       minimumFetchInterval: _fetchMaximumInterval,
@@ -72,11 +71,7 @@ class FeatureFlag {
       /// Check whether Firebase Remote Config has the feature flag data for the
       /// feature first before setting the value. Otherwise preserve the default
       /// value.
-      if (featureFlagValue != null) {
-        /// Will be set to false when the value is not equal to 'true'.
-        /// Case insensitive. 'True' will be still considered as true.
-        feature.isEnabled = featureFlagValue.asBool();
-      }
+      feature.isEnabled = featureFlagValue.asBool();
     }
 
     return _features;
