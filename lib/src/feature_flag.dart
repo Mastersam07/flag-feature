@@ -5,8 +5,8 @@ import 'feature.dart';
 
 /// App wide feature flag manager. Manages the availability status of each
 /// features on the app.
-class FireFlag {
-  /// Constructs an instance of [FireFlag].
+class FeatureFlag {
+  /// Constructs an instance of [FeatureFlag].
   ///
   /// Make sure you have set the required Firebase Remote Config setup on your
   /// app.
@@ -16,14 +16,20 @@ class FireFlag {
   /// Set the [fetchExpirationDuration] to specify the custom expiration
   /// duration time for any fetch from the Firebase Remote Config server.
   /// Server fetch will only be done when the previous fetch is already
-  /// expired. Default expiration duration is 5 minutes.
-  FireFlag({
+  /// expired. Default expiration duration is 1 minute.
+  ///
+  /// Set the [fetchMaximumInterval] to specify the maximum age
+  /// of a cached config before it is considered stale.
+  /// Defaults to five hours.
+  FeatureFlag({
     @required Features features,
     Duration fetchExpirationDuration,
+    Duration fetchMaximumInterval,
   }) {
     _features = features;
     _fetchExpirationDuration =
-        fetchExpirationDuration ?? const Duration(minutes: 5);
+        fetchExpirationDuration ?? const Duration(minutes: 1);
+    _fetchMaximumInterval = fetchMaximumInterval ?? const Duration(hours: 5);
   }
 
   /// The status flag of available features.
@@ -35,8 +41,9 @@ class FireFlag {
   /// cache.
   Features _features;
 
-  RemoteConfig _remoteConfig = RemoteConfig();
+  RemoteConfig _remoteConfig;
   Duration _fetchExpirationDuration;
+  Duration _fetchMaximumInterval;
 
   /// Initialize feature flag stream.
   ///
@@ -46,7 +53,12 @@ class FireFlag {
   /// Remote Config server and store the latest config to the local cache and
   /// to the stream.
   Stream<Features> featureFlagSubscription() async* {
-    _remoteConfig = await RemoteConfig.instance;
+    _remoteConfig = RemoteConfig.instance;
+
+    await _remoteConfig.setConfigSettings(RemoteConfigSettings(
+      minimumFetchInterval: _fetchMaximumInterval,
+      fetchTimeout: _fetchExpirationDuration,
+    ));
 
     ///Fetch latest feature flag data from Firebase Remote Config and apply
     ///them.
@@ -72,11 +84,11 @@ class FireFlag {
 
   Future<Features> _featureFlagFromFirebaseRemoteConfigServer() async {
     ///1. Fetch the feature flag data from Firebase Remote Config server.
-    await _remoteConfig.fetch(expiration: _fetchExpirationDuration);
+    await _remoteConfig.fetch();
 
     ///2. Store the fetched feature flag data to Firebase Remote Config local
     ///   cache.
-    await _remoteConfig.activateFetched();
+    await _remoteConfig.fetchAndActivate();
 
     ///3. Get the feature flag from Firebase Remote Config's local cache.
     return _featureFlagFromLocalStoredFirebaseRemoteConfig();

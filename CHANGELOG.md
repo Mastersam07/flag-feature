@@ -1,3 +1,13 @@
+## [2.0.0] - 2022-07-05
+
+### Fixed
+* Added [fetchMaximumInterval] parameter to set maximum cached interval
+* Fixed [remote_config] internal remote config fetch error on fetchAndActivate()
+
+### Changed
+* Update firebase_remote_config dependency to use version ^0.10.0+1
+* Rename fire_flag to flag_feature
+
 ## [1.1.1] - 2021-02-25
 
 ### Fixed

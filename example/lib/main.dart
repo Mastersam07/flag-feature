@@ -1,4 +1,4 @@
-import 'package:fire_flag/fire_flag.dart';
+import 'package:flag_feature/flag_feature.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,7 +32,7 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
-  final fireFlag = FireFlag(
+  final featureFlag = FeatureFlag(
     features: MyApp.features,
     fetchExpirationDuration: const Duration(seconds: 0),
   );
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void retrieveFeatureFlag() {
-    widget.fireFlag.featureFlagSubscription().listen((features) {
+    widget.featureFlag.featureFlagSubscription().listen((features) {
       setState(() {
         isCounterEnabled = features.featureIsEnabled('counter');
       });
