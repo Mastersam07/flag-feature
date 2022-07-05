@@ -55,7 +55,7 @@ class FeatureFlag {
   Stream<Features> featureFlagSubscription() async* {
     _remoteConfig = RemoteConfig.instance;
 
-    _remoteConfig.setConfigSettings(RemoteConfigSettings(
+    await _remoteConfig.setConfigSettings(RemoteConfigSettings(
       minimumFetchInterval: _fetchMaximumInterval,
       fetchTimeout: _fetchExpirationDuration,
     ));

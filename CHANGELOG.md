@@ -1,3 +1,11 @@
+## [2.0.0] - 2022-07-05
+
+### Fixed
+* Add [fetchMaximumInterval] parameter to set maximum cached interval
+
+### Changed
+* Update firebase_remote_config dependency to use version ^0.10.0+1
+
 ## [1.1.1] - 2021-02-25
 
 ### Fixed

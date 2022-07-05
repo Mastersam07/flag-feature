@@ -1,7 +1,7 @@
 name: feature_flag
 description: App wide feature flag manager utilizing the power of Firebase Remote Config.
-version: 1.0.0
-homepage: https://github.com/mastersam07/fire-flag
+version: 2.0.0
+homepage: https://github.com/mastersam07/feature-flag
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
