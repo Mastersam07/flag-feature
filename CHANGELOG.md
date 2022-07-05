@@ -1,3 +1,9 @@
+## [2.0.1] - 2022-07-05
+
+### Changed
+* Update firebase_remote_config dependency to use version ^2.0.0
+* Migrate to null safety
+
 ## [2.0.0] - 2022-07-05
 
 ### Fixed
