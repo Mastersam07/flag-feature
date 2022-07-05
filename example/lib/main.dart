@@ -1,4 +1,4 @@
-import 'package:feature_flag/feature_flag.dart';
+import 'package:flag_feature/flag_feature.dart';
 import 'package:flutter/material.dart';
 
 void main() {
