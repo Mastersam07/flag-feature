@@ -1,14 +1,16 @@
-# Fire Flag
+# Flag Feature
+
+Originally a fork of [fire_flag](https://github.com/evermos/fire-flag) with continued development and updates.
 
 App wide feature flag manager. Manages the availability status of each features on the app utilizing the power of Firebase Remote Config.
 
 ## Installing
 
-Add Fire Flag to your pubspec.yaml file:
+Add Flag Feature to your pubspec.yaml file:
 
 ```yaml
 dependencies:
-  fire_flag: ^1.1.1
+  flag_feature: ^2.0.0
 ```
 
 ## Usage
@@ -50,10 +52,10 @@ Otherwise you will not be able to use Firebase Remote Config and Fire Flag.
 
 Add the following imports to your Dart code:
 ```dart
-import 'package:fire_flag/fire_flag.dart';
+import 'package:flag_feature/flag_feature.dart';
 ```
 
-Initialize `FireFlag`:
+Initialize `FeatureFlag`:
 ```dart
 
 static final features = Features(features: [
@@ -63,31 +65,32 @@ static final features = Features(features: [
     ),
   ]);
 
-var fireFlag = FireFlag(
+var featureFlag = FeatureFlag(
     features: features
     ),
 ```
 
 You can now subscribe to feature flag subscription stream to get the latest status of the feature.
+
 ```dart
 
-Features featureFlag = features;
+Features _features = features;
 
-fireFlag
+featureFlag
     .featureFlagSubscription()
-    .listen((updatedFeatureFlag) {
-    featureFlag.value = updatedFeatureFlag;
+    .listen((updatedFeatures) {
+      _features = updatedFeatures
 });
 ```
 
 
 ## Example
 
-See the [example application](https://github.com/evermos/fire-flag/tree/main/example) source
+See the [example application](https://github.com/mastersam07/feature-flag/tree/main/example) source
 for a complete sample app using the Fire Flag.
 
 ## Issues and feedback
 
-Please file specific issues, bugs, or feature requests in our [issue tracker](https://github.com/evermos/fire-flag/issues/new).
+Please file specific issues, bugs, or feature requests in our [issue tracker](https://github.com/mastersam07/feature-flag/issues/new).
 
-To contribute a change to this plugin, open a [pull request](https://github.com/evermos/fire-flag/pulls).
+To contribute a change to this plugin, open a [pull request](https://github.com/mastersam07/feature-flag/pulls).
