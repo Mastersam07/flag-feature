@@ -1,3 +1,9 @@
+## [2.1.0] - 2024-03-04
+
+### Changed
+* Update firebase_remote_config dependency
+* Fix deprecated code
+
 ## [2.0.1] - 2022-07-05
 
 ### Changed
